@@ -102,6 +102,7 @@ We're hoping this will reduce friction across the board.
 		* How Eth2 addresses limitations of Eth1
 	* Protocol explanation
 		* PoS (Casper)
+		* Forking & fork choice rules
 		* Rewards
 		* Slashing
 		* Sharding
@@ -109,7 +110,7 @@ We're hoping this will reduce friction across the board.
 		* Proof of Custody
 		* Validator lifecycle
 		* Security guarantees
-		* Forking
+                * Networking
 	* Current status of Eth2 R&D
 * Introduction to Eth2 phases
 	* Purpose of the phase system
@@ -137,6 +138,7 @@ We're hoping this will reduce friction across the board.
 
 #### Sources
 * [Eth2 Specs](https://github.com/ethereum/eth2.0-specs)
+* [Eth2 Shard Simplification Proposal](https://notes.ethereum.org/@vbuterin/HkiULaluS)
 
 ### Phase 1
 * Custody game
