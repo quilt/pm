@@ -78,156 +78,114 @@ We're hoping this will reduce friction across the board.
 * Should be easily accessible.
 
 - - - -
-## Outline
+## The Eth2 Book: Release-0 Outline
 
-### Examining Ethereum
-* Overview of Eth1
-	* Historical context
-	* Structure
-	* Limitations
-* Overview of scaling options
-	* Supernodes
-	* Sharding
-	* L2
+**Note**: Headers between sections (e.g., "Introduction and Background") only intended to provide logical groups of sections, not part of final visible content structure.
 
-#### Sources
-* [Eth1 Design Rationale](https://github.com/ethereum/wiki/wiki/Design-Rationale)
+### Introduction and Background
+- Introduction
+    - Friendly introduction
+        - Onboarding and priming
+        - Special note for Release-0
+    - Motivation
+    - Content overview
+- Eth1 Overview
+    - Blockchain basics
+        - Signatures, key pairs
+        - State, transactions, blocks
+        - Merkle trees, block headers
+        - Peer-to-Peer network basics (?)
+    - Proof of Work
+        - Consensus basics
+        - Hashing, finding, publishing blocks
+        - Transaction fees, block rewards ("incentives")
+    - Forks
+        - Fork explanation
+        - Fork choice rules
+        - Longest-Chain Rule
+        - Inclusive protocol
+    - EVM + App Basics
+        - EVM core concepts
+        - Smart contracts, gas metering
+    - Scaling
+        - Eth1 limitations
+        - L1 and L2
+        - L1 scaling options
+- Eth2 Overview
+    - Big picture
+        - Lessons from Eth1
+        - Design rationale
+        - Eth2 structure in a nutshell
+    - Proof of Stake
+    - Beacon Chain
+    - Shard chains
+    - Ewasm + EEs
+    - Rollout phases
 
-### Eth2 Overview
-* Overview of Eth2
-	* Historical context
-	* Eth2 Protocol
-		* Design rationale
-		* Principles
-		* How Eth2 addresses limitations of Eth1
-	* Protocol explanation
-		* PoS (Casper)
-		* Forking & fork choice rules
-		* Rewards
-		* Slashing
-		* Sharding
-		* Crypto (BLS, randomness)
-		* Proof of Custody
-		* Validator lifecycle
-		* Security guarantees
-                * Networking
-	* Current status of Eth2 R&D
-* Introduction to Eth2 phases
-	* Purpose of the phase system
-	* General transition overview
-	* Brief overview of each phase
-* Introduction to Eth2 Ecosystem
-	* Overview of resources
-	* Overview of research process
-	* Overview of projects
+### Proof of Stake
+- Proof of Stake in Eth2
+    - Core Proof of Stake concepts
+        - Validators, blocks, slots
+        - Epochs, EBBs (?)
+    - Core operation
+        - Proposers, attestation committees, voting, honest majority
+        - Dynamic validator pools
+    - Attack surfaces
+        - Catastrophic Crashes
+            - Basic problem description
+        - Long Range Attacks
+            - Weak subjectivity problem
+            - Long Range Attack methods
+                - Simple (future timestamps)
+                - Stake bleeding (?)
+                - Withdrawn validator bribery/hacking attacks
+    - LMD GHOST
+        - Intro as counter-mechanism shorter-range attacks
+        - Brief GHOST background
+        - LMD GHOST mechanism detail
+        - Methodology for countering shorter-range attacks
+        - Remaining open problem with longer-range attacks
+    - Casper FFG
+        - Reiteration of longer-range attacks
+        - Finality basics, intro as counter-mechanism to longer-range attacks
+        - Definitions
+            - Deposits
+            - Checkpoints
+            - Votes
+            - Supermajority links, justified checkpoints
+            - Finalized checkpoints
+        - Commandments
+        - Guarantees
+            - Proofs for each
 
-#### Sources
-* [Serenity Design Rationale](https://notes.ethereum.org/@vbuterin/rkhCgQteN?type=view)
+### Beacon Chain
+- Core Beacon Chain Components
+    - BLS signatures
+        - Explanation of ECDSA limitations
+        - Aggregation & verification fundamentals
+    - RANDAO + Swap-or-Not
+        - Randomness
+        - RANDAO details
+            - Basic concepts & purpose
+            - Mixing functions
+            - Known-value attacks
+            - Commit-reveal RANDAO
+                - Hash commitments, signature commitments
+        - Swap-or-Not
+            - Basic concepts & purpose
+            - Basic functionality
+    - SSZ (?)
+- Beacon Chain
+    - Validator life-cycle
+        - Deposited, active, exited, withdrawn
+    - Structure (in detail)
+        - State
+        - Blocks
 
-### Phase 0
-* Beacon chain
-	* Purpose & reasoning
-	* Alternatives
-* Fork choice rules
-* Assumptions (Honest Validator)
-* Deposit contract
-	* ETH2 tokens
-	* Purpose & reasoning
-	* Impact on ETH1 tokens
-* Sharding introduction
-
-#### Sources
-* [Eth2 Specs](https://github.com/ethereum/eth2.0-specs)
-* [Eth2 Shard Simplification Proposal](https://notes.ethereum.org/@vbuterin/HkiULaluS)
-
-### Phase 1
-* Custody game
-	* Purpose & reasoning
-	* Technical explanation
-* Shard data chains
-	* Overview
-		* Shards as containers for blobs of data
-	* Protocol overview
-		* Shard format & purpose
-		* Crosslinks
-		* Fork choice rules
-		* Validator shuffling
-		* Fraud proofs
-	* Data availability use-cases
-		* L2
-			* Plasma
-			* Optimistic rollups
-			* ZK rollups
-* Beacon chain updates
-
-#### Sources
-* [Eth2 Specs](https://github.com/ethereum/eth2.0-specs)
-* [NEAR Whiteboard Series: Justin Drake](https://www.youtube.com/watch?v=S262StTwkmo)
-* [Formalizing and Improving Eth2's Approach Toward Finalization of Invalid Shard Blocks](https://ethresear.ch/t/formalizing-and-improving-eth2s-approach-toward-finalization-of-invalid-shard-blocks/6263)
-
-### Phase 2
-* EEs
-	* Eth1 EEs
-		* Purpose & reasoning
-		* Challenges
-			* Stateless model conversion
-			* Account model
-		* Status
-			* SMPT
-			* Turbo Token
-			* EVM interpreter
-	* Novel EEs
-		* C Merkle Token
-		* ZK rollup EE
-		* Shard Ether
-		* SimpleUmbrella
-* eWASM
-	* Interpreters vs Compilers
-	* Metering
-		* Purpose
-		* Challenges
-* Economics
-	* Relayers
-	* State providers
-	* Fee markets
-* Cross shard transactions
-	* Purpose & reasoning
-	* Proposals & models
-		* Simple async
-		* Actor model
-		* 2-phase commit
-		* Locking R/W
-* Toolchain
-	* Simulation
-	* Developer tools (Truffle-like)
-	* Proof generation tools
-	* eWASM-centric contract languages
-	* Relayer & state provider tooling
-
-#### Sources
-* [Roadmap for an Eth1.x Execution Environment](https://notes.ethereum.org/cISMnGRMR6-EWka8QLLlYw)
-* [Stateless MPT Token](https://github.com/poemm/stateless_merkle_token)
-* [Turbo Token](https://github.com/ewasm/biturbo)
-* [Shard Ether](https://github.com/quilt/sheth)
-* [Kernel](https://github.com/quilt/kernel)
-* [State Execution in Eth2.0](https://www.youtube.com/watch?v=8H1TCbW0LJQ&t=1h34m41s)
-* [eWASM: Past, Present, Future](https://www.youtube.com/watch?v=aoaJIaq_fF8)
-* [Relay Networks and Fee Markets in Eth2.0](https://medium.com/@adlerjohn/relay-networks-and-fee-markets-in-eth-2-0-878e576f980b)
-* [Eth2.0 Shard Chain Simplification Proposal](https://notes.ethereum.org/@vbuterin/HkiULaluS)
-* [Layer 2 State Schemes](https://ethresear.ch/t/layer-2-state-schemes/5691)
-
-### Eth2 Ecosystem
-* Resources
-	* Where to find more information about Eth2.0
-* Research process
-	* Where research happens
-	* How to participate in research
-	* Who's working on research
-* Projects
-	* Easing into Eth2 projects
-	* Types of available projects
-	* Connections to specific projects
-	* Guides to getting involved
-
-#### Sources
-* [ethresear.ch](https://ethresear.ch)
+### Potential Additions
+- Networking?
+- Ecosystem?
+    - Links to relevant Phase 0 projects
+    - Contributor guides
+- Meta?
+    - Credits, full bibliography, etc
